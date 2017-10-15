@@ -1,11 +1,11 @@
 # ethwaterloo
 
-#### Created by
+#### Created by:
 @stupeters187
 @gregthegreek
 @ChainSafe
 
-#### Create at
+#### Created for:
 ethwaterloo.com
 
 # In order to run:
