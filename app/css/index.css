@@ -1,22 +1,33 @@
 html, body, .container {
     height: 100%;
+    width: 100%;
 }
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    background-color: black;
+}
+.instructions {
+  color: white;
+}
+.container-header {
+  color: white;
+  align-self: center;
 }
 .drive-list-container {
-  width: 50%;
-  height: 50%;
+  width: auto;
+  height: auto;
   align-items: center;
-  border: 2px solid black;
+  border: 2px solid green;
 }
 .drive-list-container li {
-  border: 1px solid black;
+  align-self: center;
   margin-top: 20px;
+  margin-right: 40px;
   list-style-type: none;
+  color: white;
 }
 .btn-container: {
 }
