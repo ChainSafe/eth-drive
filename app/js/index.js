@@ -24,36 +24,39 @@ switch (process.platform) {
     macWifiOff();  
     break;
   case 'linux':
-    
     break;
   default:
     
 }
 
 function generateKeyStore(pass){
-    dialogs.prompt('Password for ETH wallet. Remember it because it cannot be recovered!', function(pass) {      
-      var wallet = generate('892h@fsdf11ks8sk^2h8s8shfs.jk39hsoi@hohskd');
-      var privKey = wallet.privateKey;
-      var pubKey = wallet.address;
-      var splitKey = privKey.split("");
-      splitKey.splice(0,2);
-      var finalKey = splitKey.join("");
-      var key = Buffer.from(finalKey, 'hex');
-      var wallet = Wallet.fromPrivateKey(key);
-      var utc = wallet.toV3String(pass);
+  if (selectedDrive !== '') {
+    $('.drive-list').html("<p>Generating wallet...</p>");
+      dialogs.prompt('Password for ETH wallet. Remember it because it cannot be recovered!', function(pass) {      
+        var wallet = generate('892h@fsdf11ks8sk^2h8s8shfs.jk39hsoi@hohskd');
+        var privKey = wallet.privateKey;
+        var pubKey = wallet.address;
+        var splitKey = privKey.split("");
+        splitKey.splice(0,2);
+        var finalKey = splitKey.join("");
+        var key = Buffer.from(finalKey, 'hex');
+        var wallet = Wallet.fromPrivateKey(key);
+        var utc = wallet.toV3String(pass);
 
-      var date = moment().format();
-      var pubKey = pubKey;
-      var name = selectedDrive + '/' + 'UTC' + date + '--' + pubKey;
-      fs.writeFile(name, utc, (err) => {
-          if (err) throw err;
-              console.log("fileSaved:)");
-          });
-      printPubKey(pubKey, name);
-    })
+        var date = moment().format();
+        var pubKey = pubKey;
+        var name = selectedDrive + '/' + 'UTC' + date + '--' + pubKey;
+        fs.writeFile(name, utc, (err) => {
+            if (err) throw err;
+                $(".drive-list").html("<p>Private keys created!</p>");
+            });
+        printPubKey(pubKey, name);
+      })
+    }
 }
 
 function printPubKey(key, name) {
+    $(".drive-list").html("<p>Generating public key... </p>");
     dialog.showSaveDialog({ 
       title: 'Save path for public key',
       properties: ['openDirectory'], 
@@ -65,6 +68,7 @@ function printPubKey(key, name) {
             macWifiOn();
           }
       })
+      $(".drive-list").html("<p>Public key generated!</p>" + "\n" + "<p>All done, enjoy your new eth-drive!</p>");
     })
 }
 
@@ -103,11 +107,15 @@ function deviceSelection(item) {
 // FAST SCRUB OPTION
 function fastScrub() {
   if (selectedDrive !== '') {
-    shell.exec(`./format-udf.sh -w quick ${selectedDeviceName} 'eth_wallet'`, function(code, stdout, stderr) {
+    $('.drive-list').html("Formating....");        
+    shell.exec(`sudo ./format-udf.sh -w quick ${selectedDeviceName} 'eth_wallet'`, function(code, stdout, stderr) {
       console.log('Exit code:', code);
       console.log('Program output:', stdout);
       console.log('Program stderr:', stderr);
-    });
+      if (code === 0) {
+        $('.drive-list').html("<p>Format success!" + "\n" + "Your drive has been unmounted, please unplug and re-insert the drive!</p>");        
+      }
+    })
   }
 }
 
@@ -117,7 +125,6 @@ function fullScrub() {
     shell.exec(`./format-udf.sh -w zero ${selectedDeviceName} 'eth_wallet'`, function(code, stdout, stderr) {
       console.log('Exit code:', code);
       console.log('Program output:', stdout);
-      console.log('Program stderr:', stderr);
     });
   }
 }
