@@ -7,7 +7,7 @@
 
 [@ChainSafe](https://github.com/stupeters187)
 
-#### Create at
+#### Created at
 [ethwaterloo](https://ethwaterloo.com)
 
 # In order to run:
