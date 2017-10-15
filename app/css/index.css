@@ -1,0 +1,34 @@
+html, body, .container {
+    height: 100%;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.drive-list-container {
+  width: 50%;
+  height: 50%;
+  align-items: center;
+  border: 2px solid black;
+}
+.drive-list-container li {
+  border: 1px solid black;
+  margin-top: 20px;
+  list-style-type: none;
+}
+.btn-container: {
+}
+.btn-wrapper {
+    border: 2px solid black;
+    background-color: green;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.btn-text {
+  color: white;
+}
+.selected {
+  background-color: green;
+}
