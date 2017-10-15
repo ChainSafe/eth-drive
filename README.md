@@ -10,8 +10,12 @@
 #### Created at
 [ethwaterloo](https://ethwaterloo.com)
 
-# In order to run:
+# Dependencies:
+```
+node >=v6.11.3
+```
 
+# In order to run:
 ```
 git clone git@github.com:ChainSafe/eth-drive.git
 cd eth-drive
