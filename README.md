@@ -1,9 +1,9 @@
-# ethwaterloo
+# eth-drive 
 
 #### Created by
-[@stupeters187](https://github.com/GregTheGreek)
+[@stupeters187](https://github.com/stupeters187)
 
-[@gregthegreek](https://github.com/stupeters187)
+[@gregthegreek](https://github.com/GregTheGreek)
 
 [@ChainSafe](https://github.com/ChainSafe)
 
