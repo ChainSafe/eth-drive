@@ -21,7 +21,7 @@ var selectedDeviceName = '';
 
 switch (process.platform) {
   case 'darwin':
-    macWifiOff();  
+    // macWifiOff();  
     break;
   case 'linux':
     break;
@@ -31,7 +31,7 @@ switch (process.platform) {
 
 function generateKeyStore(pass){
   if (selectedDrive !== '') {
-    $('.drive-list').html("<p>Generating wallet...</p>");
+    $('.drive-list-container').html("<p>Generating wallet...</p>");
       dialogs.prompt('Password for ETH wallet. Remember it because it cannot be recovered!', function(pass) {      
         var wallet = generate('892h@fsdf11ks8sk^2h8s8shfs.jk39hsoi@hohskd');
         var privKey = wallet.privateKey;
@@ -48,7 +48,7 @@ function generateKeyStore(pass){
         var name = selectedDrive + '/' + 'UTC' + date + '--' + pubKey;
         fs.writeFile(name, utc, (err) => {
             if (err) throw err;
-                $(".drive-list").html("<p>Private keys created!</p>");
+                $('.drive-list-container').html("<p>Private keys created!</p>");
             });
         printPubKey(pubKey, name);
       })
@@ -56,7 +56,7 @@ function generateKeyStore(pass){
 }
 
 function printPubKey(key, name) {
-    $(".drive-list").html("<p>Generating public key... </p>");
+    $('.drive-list-container').html("<p>Generating public key... </p>");
     dialog.showSaveDialog({ 
       title: 'Save path for public key',
       properties: ['openDirectory'], 
@@ -68,7 +68,7 @@ function printPubKey(key, name) {
             macWifiOn();
           }
       })
-      $(".drive-list").html("<p>Public key generated!</p>" + "\n" + "<p>All done, enjoy your new eth-drive!</p>");
+      $('.drive-list-container').html("<p>Public key generated!</p>" + "\n" + "<p>All done, enjoy your new eth-drive!</p>");
     })
 }
 
@@ -78,17 +78,18 @@ function renderDrives(drives) {
   var driveList = "";
   for(var i = 0; i < drives.length; i++) {
     if (drives[i].mountpoints.length > 0) {
-      var item = `<li id='${drives[i].device}' className='listItem'>` + drives[i].mountpoints[0].path + "</li>";
+      console.log(drives);
+      var item = `<p id='${drives[i].device}' className='listItem'>` + drives[i].mountpoints[0].path + "</p>";
       driveList += item;
       item = "";
     }
   }
-  $('.drive-list').html(driveList);
+  $('.drive-list-container').html(driveList);
 }
 
 // FIND DEVICES ON THE LOCAL MACHINE
 function findDevices(){
-  $('.drive-list').html('<p>Searching for drives...</p>')
+  $('.drive-list-container').html('<p>Searching for drives...</p>')
   drivelist.list((error, drives) => {   
     if (error) {
       throw error;
@@ -107,13 +108,13 @@ function deviceSelection(item) {
 // FAST SCRUB OPTION
 function fastScrub() {
   if (selectedDrive !== '') {
-    $('.drive-list').html("Formating....");        
+    $('.drive-list-container').html("Formating....");        
     shell.exec(`sudo ./format-udf.sh -w quick ${selectedDeviceName} 'eth_wallet'`, function(code, stdout, stderr) {
       console.log('Exit code:', code);
       console.log('Program output:', stdout);
       console.log('Program stderr:', stderr);
       if (code === 0) {
-        $('.drive-list').html("<p>Format success!" + "\n" + "Your drive has been unmounted, please unplug and re-insert the drive!</p>");        
+        $('.drive-list-container').html("<p>Format success!" + "\n" + "Your drive has been unmounted, please unplug and re-insert the drive!</p>");        
       }
     })
   }
