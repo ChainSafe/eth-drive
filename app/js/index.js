@@ -1,24 +1,12 @@
-const { dialog } = require('electron').remote;
 const $ = require('jQuery');
-const fs = require("fs");
-const moment = require('moment');
-const drivelist = require('drivelist');
-const Wallet = require('ethereumjs-wallet');
-const generate = require('ethjs-account').generate;
 const Dialogs = require('dialogs')
-const chmod = require('chmod');
 const shell = require('shelljs');
-const { execFile } = require('child_process');
 
 // RELATIVE IMPORTS
 const connections = require('./connections');
 const generateWallet = require('./generateWallet');
 const scrubber = require('./scruber');
 const drives = require('./drives');
-
-// STUFFS
-var dialogs = Dialogs();
-chmod('./format-udf.sh', 777);
 
 // CONSTANTS
 let selectedDrive = '';
