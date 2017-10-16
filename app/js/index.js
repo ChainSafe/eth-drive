@@ -21,7 +21,7 @@ var selectedDeviceName = '';
 
 switch (process.platform) {
   case 'darwin':
-    macWifiOff();  
+    // macWifiOff();  
     break;
   case 'linux':
     break;
