@@ -7,40 +7,30 @@
 </head>
   <body>
     <div class='container'>
-      <div class='header'>
-        <h3 class='header-name'>ETHdrive</h3>
-        <h3 class="header-about">About</h3>
-        <h3 class='header-help'>Help</h3>
-      </div>
-      <div class='sub-container'>
-        <div>
-          <h1 class='container-header'>Drives</h1>
-          <div class='drive-list-container'>
-            <ul class='drive-list'>
-              <li>No drives found.</li>
-            </ul>
-          </div>
-        </div>
-        <div class='btn-container'>
-          <button id="refresh" class='btn-wrapper' type='button'>
-            <h1 class='btn-text'>Refresh</h1>
-          </button>
-          <button id="fast-scrub" class='btn-wrapper' type='button'>
-            <h1 class='btn-text'>Fast Format</h1>
-          </button>
-          <button id="full-scrub" class='btn-wrapper' type='button'>
-            <h1 class='btn-text'>Deep Scrub</h1>
-          </button>
-          <button id="generate-key" class='btn-wrapper' type='button'>
-            <h1 class='btn-text'>Generate Wallet</h1>
-          </button>
-        </div>
-        <ul class='instructions'>
-          <li>Step 1: Select a drive to format. Warning this is permanent.</li>
-          <li>Step 2: Choose 'Fast Format' or 'Deep Scrub' ** Deep Scrub can take upwards of 30 minutes</li>
-          <li>Step 3: Once drive is not mounted, unplug it and re-insert.</li>
-          <li>Step 4: Press 'Generate Wallet, make a password and choose a location to store your public key.'</li>
+      <ul>
+        <li>Step 1: Select a drive to format. Warning this is permanent.</li>
+        <li>Step 2: Choose 'Fast Format' or 'Deep Scrub' ** Deep Scrub can take upwards of 30 minutes</li>
+        <li>Step 3: Once drive is not mounted, unplug it and re-insert.</li>
+        <li>Step 4: Press 'Generate Wallet, make a password and choose a location to store your public key.'</li>
+      </ul>
+      <div class='drive-list-container'>
+        <ul class='drive-list'>
+          <li>No drives found.</li>
         </ul>
+      </div>
+      <div class='btn-container'>
+        <button id="refresh" class='btn-wrapper' type='button'>
+          <h1 class='btn-text'>Refresh</h1>
+        </button>
+        <button id="fast-scrub" class='btn-wrapper' type='button'>
+          <h1 class='btn-text'>Fast Format</h1>
+        </button>
+        <button id="full-scrub" class='btn-wrapper' type='button'>
+          <h1 class='btn-text'>Deep Scrub</h1>
+        </button>
+        <button id="generate-key" class='btn-wrapper' type='button'>
+          <h1 class='btn-text'>Generate Wallet</h1>
+        </button>
       </div>
     </div>
     <script>

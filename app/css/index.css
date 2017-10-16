@@ -1,54 +1,22 @@
 html, body, .container {
     height: 100%;
-    /*width: 100%;*/
-    margin: 0;
-    padding: 0;
 }
 .container {
-    background-color: black;
-}
-/*        */
-/* HEADER */
-/*        */
-.header {
-  width: 90%;
-  height: 50px;
-  display: flex;
-  justify-content: space-around;
-  align-self: center;
-  flex-direction: row;
-  border-bottom: 1px solid white;
-  background-color: blue;
-}
-.header h3 {
-  color: white
-}
-.header-name {
-}
-.sub-container: {
-    width: 60%;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-}
-.instructions {
-  color: white;
-}
-.container-header {
-  color: white;
-  align-self: center;
+    justify-content: space-around;
 }
 .drive-list-container {
-  width: auto;
-  height: auto;
+  width: 50%;
+  height: 50%;
   align-items: center;
-  border: 2px solid green;
+  border: 2px solid black;
 }
 .drive-list-container li {
-  align-self: center;
+  border: 1px solid black;
   margin-top: 20px;
-  margin-right: 40px;
   list-style-type: none;
-  color: white;
 }
 .btn-container: {
 }
