@@ -3,9 +3,9 @@
 #### Created by
 [@stupeters187](https://github.com/GregTheGreek)
 
-[@gregthegreek](https://github.com/chainsafe)
+[@gregthegreek](https://github.com/stupeters187)
 
-[@ChainSafe](https://github.com/stupeters187)
+[@ChainSafe](https://github.com/ChainSafe)
 
 #### Created at
 [ethwaterloo](https://ethwaterloo.com)
@@ -19,6 +19,7 @@ node >=v6.11.3
 ```
 git clone git@github.com:ChainSafe/eth-drive.git
 cd eth-drive
+cd app
 npm install
 npm start
 ```
