@@ -33,7 +33,6 @@ function scrub(type) {
     if (selectedDrive !== '') {
         if (type === 'fast') {
             scrubber.fastScrub(selectedDeviceName);
-            if ()
         if (type) 'deep':
                 scrubber.deepScrub(selectedDeviceName);
                 break;
