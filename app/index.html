@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>ETH-SCRUB</title>
-    <link href="css/index.css" rel="stylesheet">
-</head>
-  <body>
-    <div class='container'>
-      <div class='drive-list-container'>
-          <p>No drives found.</p>
-      </div>
-      <div class='btn-container'>
-        <button id="refresh" class='btn-wrapper' type='button'>
-          <h1 class='btn-text'>Refresh</h1>
-        </button>
-        <button id="fast-scrub" class='btn-wrapper' type='button'>
-          <h1 class='btn-text'>Fast Format</h1>
-        </button>
-        <button id="full-scrub" class='btn-wrapper' type='button'>
-          <h1 class='btn-text'>Deep Scrub</h1>
-        </button>
-        <button id="generate-key" class='btn-wrapper' type='button'>
-          <h1 class='btn-text'>Generate Wallet</h1>
-        </button>
-      </div>
-    </div>
-    <script>
-      require('./js/index.js')
-    </script>
-  </body>
+    <head>
+        <meta charset="UTF-8">
+        <title>ETH-SCRUB</title>
+        <link href="css/index.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class='container'>
+            <div class="side-container">
+                <div class="logo">
+                    <h1>LOGO</h1>
+                </div>
+                <div id="refresh" class='btn-refresh'>
+                    <h1 class='btn-refresh-text'>Refresh</h1>
+                </div>
+                <div class='drive-list-container'>
+                    <div>No drives found.</div>
+                </div>
+            </div>
+            <div class='main-container'>
+                <div class='filesizes-container'>
+                    <p>No drive selected.</p>
+                </div>
+                <div class='btn-container'>
+                    <div id="fast-scrub" class='btn-wrapper'>
+                        <h1 class='btn-text'>Fast Format</h1>
+                    </div>
+                    <div id="full-scrub" class='btn-wrapper'>
+                        <h1 class='btn-text'>Deep Scrub</h1>
+                    </div>
+                    <div id="generate-key" class='btn-wrapper'>
+                        <h1 class='btn-text'>Generate Wallet</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            require('./js/index.js')
+        </script>
+    </body>
 </html>

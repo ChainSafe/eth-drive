@@ -27,14 +27,14 @@ function generateKeystore(selectedDrive) {
         var name = selectedDrive + '/' + 'UTC' + date + '--' + pubKey;
         fs.writeFile(name, utc, (err) => {
         if (err) throw err;
-            $('.drive-list-container').html("<p>Private keys created!</p>");
+            $('.file-sizes-container').html("<p>Private keys created!</p>");
         });
         printPubKey(key, name);
     })
 }
 
 function printPubKey(key, name) {
-    $('.drive-list-container').html("<p>Generating public key... </p>");
+    $('.file-sizes-container').html("<p>Generating public key... </p>");
     dialog.showSaveDialog({ 
         title: 'Save path for public key.',
         properties: ['openDirectory'], 
@@ -46,7 +46,7 @@ function printPubKey(key, name) {
                 connections.macWifiOn();
             }
         })
-        $('.drive-list-container').html("<p>Public key generated!</p>" + "\n" + "<p>All done, enjoy your new eth-drive!</p>");
+        $('.file-sizes-container').html("<p>Public key generated!</p>" + "\n" + "<p>All done, enjoy your new eth-drive!</p>");
     })
 }
 

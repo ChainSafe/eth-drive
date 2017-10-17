@@ -763,7 +763,7 @@ elif [[ "$OSTYPE" == "msys" ]]; then
 elif [[ "$OSTYPE" == "win32" ]]; then
     echo "WIN32"
     echo "Could not mount"
-    echo "Please RE-MOUNT"elif [[ "$OSTYPE" == "msys" ]]; then
+    echo "Please RE-MOUNT"
 fi
 
 # TODO find a way to auto-mount (`$SUDO mount -a` doesn't work).  in the meantime...
