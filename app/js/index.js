@@ -9,20 +9,19 @@ const scrubber = require('./scruber');
 const drives = require('./drives');
 
 // CONSTANTS
-let os;
 let fileSizes;
 let selectedDrive = '';
 let selectedDeviceName = '';
-// SHUT DOWN NETWORK]
+
+// SHUT DOWN NETWORK
 switch (process.platform) {
-    case 'darwin':
-        connections.macWifiOff();  
-        os = 'darwin';
-        break;
-    case 'linux':
-        break;
-    default:
-        console.log('platform not supported for disabling connections!')
+  case 'darwin':
+    // connections.macWifiOff();  
+    break;
+  case 'linux':
+    break;
+  default:
+    console.log('platform not supported for disabling connections!')
 }
 
 // INITIAL SEARCH FOR DRIVES
@@ -31,9 +30,11 @@ drives.findDrives();
 // SCRUB DRIVES
 function scrub(type) {
     if (selectedDrive !== '') {
-        if (type === 'fast') {
-            scrubber.fastScrub(selectedDeviceName);
-        if (type) 'deep':
+        switch (type) {
+            case 'fast':
+                scrubber.fastScrub(selectedDeviceName);
+                break;
+            case 'deep':
                 scrubber.deepScrub(selectedDeviceName);
                 break;
         }
