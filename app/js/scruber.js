@@ -3,13 +3,13 @@ const shell = require('shelljs');
 
 // FAST SCRUB OPTION
 function fastScrub(deviceName, callback) {
-    $('.drive-list-container').html("Formating....");        
+    $('.drive-list-container').html("<div>Formating....</div>");        
     shell.exec(`sudo ./format-udf.sh -w quick ${deviceName} 'eth_wallet'`, function(code, stdout, stderr) {
         console.log('Exit code:', code);
         console.log('Program output:', stdout);
         console.log('Program stderr:', stderr);
         if (code === 0) {
-            $('.drive-list-container').html("<p>Format success!" + "\n" + "Your drive has been unmounted, please unplug and re-insert the drive!</p>");        
+            $('.filesizes-container').html("<div>" + "\n" + "Your drive has been formatted!</div>");        
             callback(true);
         } else {
             callback(false);
@@ -24,7 +24,7 @@ function deepScrub(deviceName) {
             console.log('Exit code:', code);
             console.log('Program output:', stdout);
             if (code === 0) {
-                $('.drive-list-container').html("<p>Format success!" + "\n" + "Your drive has been unmounted, please unplug and re-insert the drive!</p>");        
+                $('.filesizes-container').html("<div>Format success!" + "\n" + "Your drive has been formatted!</div>");        
             }
         });
     }

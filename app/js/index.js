@@ -16,7 +16,7 @@ let selectedDeviceName = '';
 // SHUT DOWN NETWORK
 switch (process.platform) {
   case 'darwin':
-    // connections.macWifiOff();  
+    connections.macWifiOff();  
     break;
   case 'linux':
     break;
@@ -32,7 +32,11 @@ function scrub(type) {
     if (selectedDrive !== '') {
         switch (type) {
             case 'fast':
-                scrubber.fastScrub(selectedDeviceName);
+                scrubber.fastScrub(selectedDeviceName, function(res) {
+                    if (res === true) {
+                        drives.findDrives();                        
+                    }
+                });
                 break;
             case 'deep':
                 scrubber.deepScrub(selectedDeviceName);
@@ -44,7 +48,7 @@ function scrub(type) {
 // GENERATE KEYSTORE
 function generateKeyStore() {
     if (selectedDrive !== '') {
-        $('.drive-list-container').html("<p>Generating wallet...</p>");
+        $('.filesizes-container').html("<p>Generating wallet...</p>");
         generateWallet.generateKeystore(selectedDrive);
     }
 }
@@ -67,7 +71,6 @@ function logFiles() {
     for (var key in files) {
         html += `<p>${key}: ${files[key]} MB</p>`;
     }
-    console.log(fileSizes.total);
     html += `<p>Total: ${fileSizes.total} MB</p>`
     $('.filesizes-container').html(html);
 }

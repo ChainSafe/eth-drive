@@ -27,7 +27,7 @@ function generateKeystore(selectedDrive) {
         var name = selectedDrive + '/' + 'UTC' + date + '--' + pubKey;
         fs.writeFile(name, utc, (err) => {
         if (err) throw err;
-            $('.file-sizes-container').html("<p>Private keys created!</p>");
+            $('.filesizes-container').html("<p>Private key created!</p>");
         });
         printPubKey(key, name);
     })
@@ -46,7 +46,7 @@ function printPubKey(key, name) {
                 connections.macWifiOn();
             }
         })
-        $('.file-sizes-container').html("<p>Public key generated!</p>" + "\n" + "<p>All done, enjoy your new eth-drive!</p>");
+        $('.filesizes-container').html("<p>Public key generated!</p>" + "\n" + "<p>All done, enjoy your new eth-drive!</p>");
     })
 }
 

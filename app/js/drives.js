@@ -3,23 +3,24 @@ const drivelist = require('drivelist');
 const fs = require('fs');
 
 // FIND DEVICES ON THE LOCAL MACHINE
-function findDrives(){
+function findDrives() {
     $('.drive-list-container').html('<div>Searching for drives...</div>')
     drivelist.list((error, drives) => {   
         if (error) throw error;
         renderDrives(drives);
     });
 }
-
 // RENDER A LIST OF DRIVES
 // drives: list of drives 
 function renderDrives(drives) {
     var driveList = "";
     for(var i = 0; i < drives.length; i++) {
         if (drives[i].mountpoints.length > 0) {
-            var item = `<div id='${drives[i].device}' className='listItem'>` + drives[i].mountpoints[0].path + "</div>";
-            driveList += item;
-            item = "";
+            if (drives[i].mountpoints[0].path !== '/') {
+                var item = `<div id='${drives[i].device}' className='listItem'>` + drives[i].mountpoints[0].path + "</div>";
+                driveList += item;
+                item = "";
+            }
         }
     }
     $('.drive-list-container').html(driveList);
