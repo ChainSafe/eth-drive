@@ -749,6 +749,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 # Mac OSX
     if diskutil list |grep eth_wallet; then
         $SUDO diskutil mount "/dev/$DEVICE"
+        echo "/dev/$DEVICE mounted."
     fi
 elif [[ "$OSTYPE" == "cygwin" ]]; then
 # POSIX compatibility layer and Linux environment emulation for Windows

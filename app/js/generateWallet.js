@@ -12,24 +12,26 @@ var dialogs = Dialogs();
 var connections = require('./connections');
 
 function generateKeystore(selectedDrive) {
-    dialogs.prompt('Password for ETH wallet. Remember it because it cannot be recovered!', function(pass) {      
-        var wallet = generate('892h@fsdf11ks8sk^2h8s8shfs.jk39hsoi@hohskd');
-        var privKey = wallet.privateKey;
-        var pubKey = wallet.address;
-        var splitKey = privKey.split("");
-        splitKey.splice(0,2);
-        var finalKey = splitKey.join("");
-        var key = Buffer.from(finalKey, 'hex');
-        var wallet = Wallet.fromPrivateKey(key);
-        var utc = wallet.toV3String(pass);
-        var date = moment().format();
-        var pubKey = pubKey;
-        var name = selectedDrive + '/' + 'UTC' + date + '--' + pubKey;
-        fs.writeFile(name, utc, (err) => {
-        if (err) throw err;
-            $('.filesizes-container').html("<p>Private key created!</p>");
-        });
-        printPubKey(key, name);
+    dialogs.prompt('Password for ETH wallet. Remember it because it cannot be recovered!', function(pass) {
+        if (pass !== undefined) {
+            var wallet = generate('892h@fsdf11ks8sk^2h8s8shfs.jk39hsoi@hohskd');
+            var privKey = wallet.privateKey;
+            var pubKey = wallet.address;
+            var splitKey = privKey.split("");
+            splitKey.splice(0,2);
+            var finalKey = splitKey.join("");
+            var key = Buffer.from(finalKey, 'hex');
+            var wallet = Wallet.fromPrivateKey(key);
+            var utc = wallet.toV3String(pass);
+            var date = moment().format();
+            var pubKey = pubKey;
+            var name = selectedDrive + '/' + 'UTC' + date + '--' + pubKey;
+            fs.writeFile(name, utc, (err) => {
+            if (err) throw err;
+                $('.filesizes-container').html("<p>Private key created!</p>");
+            });
+            printPubKey(key, name);
+        }
     })
 }
 
