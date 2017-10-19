@@ -1,17 +1,20 @@
 const $ = require('jQuery');
-const shell = require('shelljs');
-
+var sudo = require('sudo-prompt');
+var options = {
+  name: 'eth drive'
+};
 // FAST SCRUB OPTION
 function fastScrub(deviceName, callback) {
-    $('.drive-list-container').html("Formating....");        
-    shell.exec(`sudo ./format-udf.sh -w quick ${deviceName} 'eth_wallet'`, function(code, stdout, stderr) {
-        console.log('Exit code:', code);
+    $('.drive-list-container').html("<div>Formating....</div>");        
+    sudo.exec(`format-udf.sh -w quick ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
+        console.log('Error:', error);
         console.log('Program output:', stdout);
         console.log('Program stderr:', stderr);
-        if (code === 0) {
-            $('.drive-list-container').html("<p>Format success!" + "\n" + "Your drive has been unmounted, please unplug and re-insert the drive!</p>");        
+        if (error === null) {
+            $('.filesizes-container').html("<div>Your drive has been formatted!</div>");        
             callback(true);
         } else {
+            $('.filesizes-container').html(`<div>An error occured: \n ${error}</div>`);  
             callback(false);
         }
     })
@@ -20,11 +23,15 @@ function fastScrub(deviceName, callback) {
 // SLOW SCRUB OPTION
 function deepScrub(deviceName) {
     if (selectedDrive !== '') {
-        shell.exec(`./format-udf.sh -w zero ${deviceName} 'eth_wallet'`, function(code, stdout, stderr) {
+        sudo.exec(`./format-udf.sh -w zero ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
             console.log('Exit code:', code);
             console.log('Program output:', stdout);
-            if (code === 0) {
-                $('.drive-list-container').html("<p>Format success!" + "\n" + "Your drive has been unmounted, please unplug and re-insert the drive!</p>");        
+            if (error === null) {
+                $('.filesizes-container').html("<div>Your drive has been scrubbed!</div>");        
+                callback(true);
+            } else {
+                $('.filesizes-container').html(`<div>An error occured: \n ${error}</div>`);  
+                callback(false);
             }
         });
     }

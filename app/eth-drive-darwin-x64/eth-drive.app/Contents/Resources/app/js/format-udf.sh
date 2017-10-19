@@ -749,6 +749,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 # Mac OSX
     if diskutil list |grep eth_wallet; then
         $SUDO diskutil mount "/dev/$DEVICE"
+        echo "Successfully mounted /dev/$DEVICE."
     fi
 elif [[ "$OSTYPE" == "cygwin" ]]; then
 # POSIX compatibility layer and Linux environment emulation for Windows
@@ -765,6 +766,3 @@ elif [[ "$OSTYPE" == "win32" ]]; then
     echo "Could not mount"
     echo "Please RE-MOUNT"
 fi
-
-# TODO find a way to auto-mount (`$SUDO mount -a` doesn't work).  in the meantime...
-echo "Formatted"

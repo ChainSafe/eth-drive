@@ -5,16 +5,16 @@ var options = {
 };
 // FAST SCRUB OPTION
 function fastScrub(deviceName, callback) {
-    $('.drive-list-container').html("<div>Formating....</div>");        
-    sudo.exec(`./format-udf.sh -w quick ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
+    $('.drive-list-container').html("<div>Formating....</div>");
+    sudo.exec(`sh file://${__dirname}/format-udf.sh -w quick ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
         console.log('Error:', error);
         console.log('Program output:', stdout);
         console.log('Program stderr:', stderr);
         if (error === null) {
-            $('.filesizes-container').html("<div>Your drive has been formatted!</div>");        
+            $('.filesizes-container').html("<div>Your drive has been formatted!</div>");
             callback(true);
         } else {
-            $('.filesizes-container').html(`<div>An error occured: \n ${error}</div>`);  
+            $('.filesizes-container').html(`<div>An error occured: \n ${error}</div>`);
             callback(false);
         }
     })
@@ -27,10 +27,10 @@ function deepScrub(deviceName) {
             console.log('Exit code:', code);
             console.log('Program output:', stdout);
             if (error === null) {
-                $('.filesizes-container').html("<div>Your drive has been scrubbed!</div>");        
+                $('.filesizes-container').html("<div>Your drive has been scrubbed!</div>");
                 callback(true);
             } else {
-                $('.filesizes-container').html(`<div>An error occured: \n ${error}</div>`);  
+                $('.filesizes-container').html(`<div>An error occured: \n ${error}</div>`);
                 callback(false);
             }
         });

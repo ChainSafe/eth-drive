@@ -8,7 +8,7 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-win": "electron-packager . eth-drive --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",    
+    "package-win": "electron-packager . eth-drive --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
     "package-linux": "electron-packager . eth-drive --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/1024x1024.png --prune=true --out=release-builds"
   },
   "repository": "https://github.com/electron/electron-quick-start",
@@ -39,7 +39,8 @@
     "ethjs-account": "^0.1.4",
     "jQuery": "^1.7.4",
     "moment": "^2.19.1",
-    "shelljs": "^0.7.8"
+    "shelljs": "^0.7.8",
+    "sudo-prompt": "^7.1.1"
   },
   "config": {
     "forge": {

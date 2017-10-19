@@ -65,6 +65,12 @@ html, body, .container {
     border-bottom: 0.5px solid white;
     background-color: #9A9A9A;
 }
+.drive-list-container div:hover {
+    background-color: lightgreen;
+}
+.drive-list-container div:active {
+    background-color: lightgrey;
+}
 /**/
 /*MAIN LIST*/
 /**/
@@ -108,6 +114,7 @@ html, body, .container {
     background-color: lightgreen;
 }
 .btn-wrapper:active {
+    border: 1px solid black;
     background-color: lightgrey;
 }
 .btn-text {
