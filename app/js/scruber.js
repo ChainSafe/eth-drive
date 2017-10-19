@@ -1,6 +1,6 @@
 const $ = require('jQuery');
-var sudo = require('sudo-prompt');
-var resolve = require('path').resolve;
+const sudo = require('sudo-prompt');
+const resolve = require('path').resolve;
 
 // defualts
 const path = resolve('./format-udf.sh');
@@ -11,7 +11,7 @@ const options = {
 // FAST SCRUB OPTION
 function fastScrub(deviceName, callback) {
     $('.drive-list-container').html("<div>Formating....</div>");
-    sudo.exec(`${path} -w quick ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
+    sudo.exec(`sh ${path} -w quick ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
         console.log('Error:', error);
         console.log('Program output:', stdout);
         console.log('Program stderr:', stderr);
