@@ -1,12 +1,17 @@
 const $ = require('jQuery');
 var sudo = require('sudo-prompt');
-var options = {
+var resolve = require('path').resolve;
+
+// defualts
+const path = resolve('./format-udf.sh');
+const options = {
   name: 'eth drive'
 };
+
 // FAST SCRUB OPTION
 function fastScrub(deviceName, callback) {
     $('.drive-list-container').html("<div>Formating....</div>");
-    sudo.exec(`sh file://${__dirname}/format-udf.sh -w quick ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
+    sudo.exec(`${path} -w quick ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
         console.log('Error:', error);
         console.log('Program output:', stdout);
         console.log('Program stderr:', stderr);
@@ -23,7 +28,7 @@ function fastScrub(deviceName, callback) {
 // SLOW SCRUB OPTION
 function deepScrub(deviceName) {
     if (selectedDrive !== '') {
-        sudo.exec(`./format-udf.sh -w zero ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
+        sudo.exec(`sh ${path} -w zero ${deviceName} 'eth_wallet'`, options, function(error, stdout, stderr) {
             console.log('Exit code:', code);
             console.log('Program output:', stdout);
             if (error === null) {
