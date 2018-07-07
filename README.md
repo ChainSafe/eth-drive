@@ -1,3 +1,9 @@
+# Overview
+
+The goal of this repository is to provide a software cold storage solution to developers and users of the Ethereum ecosystem. At the time of this writing all available cold storage solutions require proprietary hardware that is cost prohibitive and exclusionary for holders of small amounts of crypto. 
+
+The application is an electron desktop app with the ethereumjs-wallet npm module providing all of the Ethereum wallet functionality.
+=======
 # eth-drive 
 
 #### Created by
@@ -5,7 +11,7 @@
 
 [@gregthegreek](https://github.com/GregTheGreek)
 
-[@ChainSafe](https://github.com/ChainSafe)
+[@ChainSafe](https://github.com/chainsafe)
 
 #### Created at
 [ethwaterloo](https://ethwaterloo.com)
